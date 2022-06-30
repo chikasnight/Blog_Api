@@ -14,7 +14,7 @@ class BlogController extends Controller
         ]);
         //create a blog post
         $newBlogPost = Blog::create([
-            'user_id'=> 1,
+            'user_id'=>1,
             'posts'=> $request->posts,
             'comments'=> $request->comments
             
@@ -25,7 +25,7 @@ class BlogController extends Controller
         return response()->json([
             'success'=> true,
             'message'=>'successfully created a post',
-            'data' => $newBlogPost,
+            'data' => new BlogResource($newBlogPost),
         ]);
     }
 }
