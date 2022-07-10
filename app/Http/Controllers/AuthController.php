@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Rules\CheckCurrentPassword;
 use App\Rules\CompareNewPasswordWithOld;
 
-class Authentication extends Controller
+class AuthController extends Controller
 {
     public function register(Request $request) {
       
