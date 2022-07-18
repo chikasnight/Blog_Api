@@ -3,6 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class CompareNewPasswordWithOld implements Rule
 {
@@ -26,8 +27,8 @@ class CompareNewPasswordWithOld implements Rule
     public function passes($attribute, $value)
     {
         
-        $user= auth('sanctum')->user();
-        return Hash::check($value, $user->password);
+       // $user= auth('sanctum')->user();
+      //  return Hash::check($value, $user->password);
     
     }
 
@@ -38,6 +39,6 @@ class CompareNewPasswordWithOld implements Rule
      */
     public function message()
     {
-        return 'password matches with current password.';
+        return 'password matches with old password.';
     }
 }

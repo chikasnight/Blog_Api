@@ -49,6 +49,10 @@ class PostController extends Controller
 
         $post->posts = $request->posts;
         $post->save();
+        return response() ->json([
+            'success' => true,
+            'message' => 'Post updated'
+        ]);
     }
     public function deletePost( $postId){
 
@@ -61,7 +65,7 @@ class PostController extends Controller
         }
 
         
-
+        $this->authorize('delete',$post);
 
         //delete property
         $post-> delete();

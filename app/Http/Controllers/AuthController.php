@@ -86,7 +86,7 @@ class AuthController extends Controller
     public function changePassword(Request $request){
         $request->validate([
             'current_password'=>['required', new CheckCurrentPassword()],
-            'new_password'=>['required',new CompareNewPasswordWithOld(), 'confirmed']
+            'new_password'=>['required',/*new CompareNewPasswordWithOld()*/ 'confirmed']
         ]);
 
         $user= auth('sanctum')->user();

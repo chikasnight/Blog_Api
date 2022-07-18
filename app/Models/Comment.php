@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $fillable = [
-        'user_id',
+        'post_id',
         'comments'
     ];
        // relationship of user & post is one to many;

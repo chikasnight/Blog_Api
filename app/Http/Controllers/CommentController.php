@@ -15,7 +15,7 @@ class CommentController extends Controller
         ]);
         //create a blog post
         $newBlogComment = Comment::create([
-            'user_id'=>auth()->id(),
+            'post_id'=>auth()->id(),
             'comments'=> $request->comments
             
         ]);
@@ -24,7 +24,7 @@ class CommentController extends Controller
 
         return response()->json([
             'success'=> true,
-            'message'=>'successfully created a post',
+            'message'=>'successfully created a comment',
             'data' => new CommentResource($newBlogComment),
         ]);
     }
@@ -34,23 +34,27 @@ class CommentController extends Controller
 
         ]);
         
-        $comment = Post::find($commentId);
-        if(!$postId) {
+        $comment = Comment::find($commentId);
+        if(!$commentId) {
             return response() ->json([
                 'success' => false,
                 'message' => 'comment not found'
             ]);
 
-        $this->authorize('update',$commentId);
+        $this->authorize('update',$comment);
 
         }
 
         $comment->comments = $request->comments;
         $comment->save();
+        return response() ->json([
+            'success' => true,
+            'message' => 'comment updated'
+        ]);
     }
     public function deleteComment( $commentId){
 
-        $comment = Post::find($commentId);
+        $comment = Comment::find($commentId);
         if(!$comment) {
             return response() ->json([
                 'success' => false,
@@ -60,13 +64,13 @@ class CommentController extends Controller
 
         
 
-
+        $this->authorize('delete',$comment);
         //delete property
         $comment-> delete();
 
         return response() ->json([
             'success' => true,
-            'message' => 'commentId deleted'
+            'message' => 'comment deleted'
             ]); 
     }
 }
