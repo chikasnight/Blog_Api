@@ -17,6 +17,7 @@ class PostResource extends JsonResource
         
         return [
             'id' => $this->id,
+            'user' => $this->user,
             'posts'=> $this->posts,
             'create_dates'=>[
                 'created_at_human'=>$this->created_at->diffForHumans(),

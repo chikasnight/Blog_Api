@@ -18,6 +18,7 @@ Route::group(['middleware' =>'auth:sanctum'],function(){
     Route::delete('comments/{commentId}', [CommentController::class, 'deleteComment']);
     Route::delete('account/delete', [AuthController::class, 'accountDelete']);
     Route::post('change/password', [AuthController::class, 'changePassword']);
+    
 });
 Route::post('login',[AuthController::class,'login']);
 Route::post('register',[AuthController::class,'register']);

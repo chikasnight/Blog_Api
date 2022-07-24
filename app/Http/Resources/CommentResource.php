@@ -16,6 +16,7 @@ class CommentResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'user' => $this->user,
             'comments'=> $this->comments,
             'create_dates'=>[
                 'created_at_human'=>$this->created_at->diffForHumans(),
