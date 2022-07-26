@@ -20,7 +20,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('posts/{postId}', [PostController::class, 'updatePost']);
     Route::delete('posts/{postId}', [PostController::class, 'deletePost']);
 
-    Route::post('comments', [CommentController::class, 'comment']);
+    Route::post('comments/{postId}', [CommentController::class, 'comment']);
     Route::put('comments/{commentId}', [CommentController::class, 'updateComment']);
     Route::delete('comments/{commentId}', [CommentController::class, 'deleteComment']);
 });
