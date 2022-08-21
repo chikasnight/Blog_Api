@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Rules\CheckCurrentPassword;
 use App\Rules\CompareNewPasswordWithOld;
+use App\Http\Resources\UserResource;
 
 class AuthController extends Controller
 {
@@ -33,7 +34,7 @@ class AuthController extends Controller
             'message'=>'registration successful',
             'data' =>[
                 'token' => $token,
-                'user' => $user
+                'user' => new UserResource ($user)
             ]
         ]);        
     }

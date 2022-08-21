@@ -41,9 +41,9 @@ class CommentController extends Controller
                 'message' => 'comment not found'
             ]);
 
+        }
         $this->authorize('update',$comment);
 
-        }
 
         $comment->comments = $request->comments;
         $comment->save();

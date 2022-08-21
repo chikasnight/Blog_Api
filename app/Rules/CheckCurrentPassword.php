@@ -29,7 +29,7 @@ class CheckCurrentPassword implements Rule
         
         /*get current password and compare with the password passed into the request */
         $currentPassword=auth('sanctum') ->user()-> password;
-        return Hash::check($value, $currentPassword);
+        return !Hash::check($value, $currentPassword);
 
     }
 
@@ -40,6 +40,6 @@ class CheckCurrentPassword implements Rule
      */
     public function message()
     {
-        return 'password matches with current password';
+        return 'wrong current password.';
     }
 }
