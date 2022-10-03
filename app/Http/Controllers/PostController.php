@@ -37,7 +37,7 @@ class PostController extends Controller
         ]);
         
         $post = Post::find($postId);
-        if(!$postId) {
+        if(!$post) {
             return response() ->json([
                 'success' => false,
                 'message' => 'Post not found'

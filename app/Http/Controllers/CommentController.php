@@ -35,7 +35,7 @@ class CommentController extends Controller
         ]);
         
         $comment = Comment::find($commentId);
-        if(!$commentId) {
+        if(!$comment) {
             return response() ->json([
                 'success' => false,
                 'message' => 'comment not found'
